@@ -56,6 +56,30 @@ object Build : BuildType({
             tasks = "clean build"
             gradleWrapperPath = ""
         }
+        dockerCommand {
+            name = "build image"
+            id = "__NEW_RUNNER__"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = """
+            bmricha4/cicd-demo:myapp-%build.number%
+            bmricha4/cicd-demo:latest
+        """.trimIndent()
+                commandArgs = "--pull"
+            }
+        }
+        dockerCommand {
+            name = "push image"
+            id = "__NEW_RUNNER__"
+            commandType = push {
+                namesAndTags = """
+            bmricha4/cicd-demo:myapp-%build.number%
+            bmricha4/cicd-demo:latest
+        """.trimIndent()
+            }
+        }
     }
 
     triggers {
