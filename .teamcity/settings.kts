@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
+import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -31,6 +32,15 @@ version = "2023.11"
 project {
 
     buildType(Build)
+
+    features {
+        dockerRegistry {
+            id = "PROJECT_EXT_3"
+            name = "Docker Registry"
+            userName = "bmricha4"
+            password = "credentialsJSON:475833c3-4083-40de-bfef-aa5815336d76"
+        }
+    }
 }
 
 object Build : BuildType({
