@@ -3,6 +3,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -80,6 +81,15 @@ object Build : BuildType({
                     bmricha4/cicd-demo:latest
                 """.trimIndent()
             }
+        }
+        script {
+            name = "deploy to openshift"
+            id = "deploy_to_openshift"
+            scriptContent = """
+                oc delete all -l app=cicd-demo
+                oc new-app bmricha4/cicd-demo:latest --name=cicd-demo
+                oc create route edge cicd-demo --service=cicd-demo
+            """.trimIndent()
         }
     }
 
