@@ -67,6 +67,12 @@ object Build : BuildType({
             id = "gradle_runner"
             tasks = "clean build"
         }
+        step {
+            name = "Sonar Analysis"
+            id = "Sonar_Analysis"
+            type = "sonar-plugin"
+            param("sonarServer", "0bff9787-1b19-49e4-8f93-c492b5271bf3")
+        }
         dockerCommand {
             name = "docker build"
             id = "DockerCommand"
@@ -99,12 +105,6 @@ object Build : BuildType({
                 oc new-app bmricha4/cicd-demo:latest --name=cicd-demo
                 oc create route edge cicd-demo --service=cicd-demo
             """.trimIndent()
-        }
-        step {
-            name = "Sonar Analysis"
-            id = "Sonar_Analysis"
-            type = "sonar-plugin"
-            param("sonarServer", "0bff9787-1b19-49e4-8f93-c492b5271bf3")
         }
     }
 
