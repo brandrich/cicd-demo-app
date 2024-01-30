@@ -71,6 +71,7 @@ object Build : BuildType({
             name = "Sonar Analysis"
             id = "Sonar_Analysis"
             type = "sonar-plugin"
+            param("teamcity.tool.sonarquberunner", "%teamcity.tool.sonar-qube-scanner.4.2.0.1873-scanner%")
             param("sonarServer", "0bff9787-1b19-49e4-8f93-c492b5271bf3")
         }
         dockerCommand {
