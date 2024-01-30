@@ -8,7 +8,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String index() {
-        return "This is a test build!";
+        return "This is a test branch!";
     }
 
 }
