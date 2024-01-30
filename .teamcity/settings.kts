@@ -36,6 +36,16 @@ project {
     buildType(Build)
 
     features {
+        feature {
+            id = "PROJECT_EXT_2"
+            type = "sonar-qube"
+            param("useToken", "false")
+            param("password", "scrambled:dGVzdHM=")
+            param("name", "Homelab Sonar")
+            param("id", "0bff9787-1b19-49e4-8f93-c492b5271bf3")
+            param("login", "admin")
+            param("url", "http://192.168.1.4:9000")
+        }
         dockerRegistry {
             id = "PROJECT_EXT_3"
             name = "Docker Registry"
