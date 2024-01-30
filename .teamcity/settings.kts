@@ -42,7 +42,7 @@ project {
             param("useToken", "true")
             param("name", "Homelab Sonar")
             param("id", "0bff9787-1b19-49e4-8f93-c492b5271bf3")
-            param("url", "172.17.0.2:9000")
+            param("url", "http://172.17.0.2:9000")
             param("token", "scrambled:c3FhX2ZjYzM4MmNiOTU1N2E0YWE5MTNiN2YyYTUzNDNmNGFjNWQwNzJmMWY=")
         }
         dockerRegistry {
