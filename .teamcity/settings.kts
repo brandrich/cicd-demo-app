@@ -100,6 +100,12 @@ object Build : BuildType({
                 oc create route edge cicd-demo --service=cicd-demo
             """.trimIndent()
         }
+        step {
+            name = "Sonar Analysis"
+            id = "Sonar_Analysis"
+            type = "sonar-plugin"
+            param("sonarServer", "0bff9787-1b19-49e4-8f93-c492b5271bf3")
+        }
     }
 
     triggers {
